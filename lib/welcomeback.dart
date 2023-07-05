@@ -1,0 +1,148 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+class Welcome extends StatefulWidget {
+  const Welcome({super.key});
+
+  @override
+  State<Welcome> createState() => _WelcomeState();
+}
+
+class _WelcomeState extends State<Welcome> {
+  bool? isChecked = false ;
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Color(0xff363636),
+        body: Container(
+          width: double.infinity,
+          margin: EdgeInsets.all(13),
+          child: Stack
+            (
+children: [
+  SizedBox(
+    height: 13,
+  ),
+
+  IconButton(onPressed: (){
+    Navigator.of(context).pop();
+  },icon: Icon(Icons.cancel_outlined,size: 35, color: Colors.white,)),
+
+  Column(
+children: [
+  SizedBox(height: 100),
+
+  Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Text(
+
+      'Welcome Back! ',
+      style: TextStyle(
+        fontSize: 35, color: Colors.white ,
+        fontWeight: FontWeight.bold ,
+      ),
+
+      textAlign: TextAlign.center,
+    ),
+  ),
+
+  SizedBox(height: 60),
+
+  Padding(
+    padding: const EdgeInsets.only(right: 280),
+    child: Text(
+      "Email" ,
+      style: TextStyle(
+        fontSize: 12, color: Colors.white ,
+      ),
+    ),
+  ),
+  Padding(
+    padding: const EdgeInsets.only(left: 15 , right: 15 , top: 10),
+    child: TextField(
+      style: TextStyle(fontSize: 16),
+      decoration: InputDecoration(
+        filled: true, fillColor: Color(0xffF5EDDA),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+      ),
+    ),
+  ),
+
+  SizedBox(height: 30,),
+
+  Padding(
+    padding: const EdgeInsets.only(right: 280),
+    child: Text(
+      "Password" ,
+      style: TextStyle(
+        fontSize: 12, color: Colors.white ,
+      ),
+    ),
+  ),
+
+  Padding(
+    padding: const EdgeInsets.only(left: 15 , right: 15 , top: 10),
+    child: TextField(
+      style: TextStyle(fontSize: 16),
+      decoration: InputDecoration(
+        filled: true, fillColor: Color(0xffF5EDDA),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+      ),
+    ),
+  ),
+
+  SizedBox(height: 30,) ,
+
+  Row(
+    children: [
+      Padding(
+        padding: const EdgeInsets.only(left: 10),
+        child: Checkbox(
+          value: isChecked,
+          activeColor: Color(0xffA9A454),
+          onChanged: (newBool) {
+            setState(() {
+              isChecked = newBool;
+            });
+          },
+        ),
+      ),
+      Text ( "Remember me     " ,
+        style: TextStyle(
+          color: Colors.white,
+        ),)
+    ],
+  ),
+
+  SizedBox(height: 200 ,),
+
+  MaterialButton(
+    onPressed: () {},
+    height: 60,
+    minWidth: 200,
+    child: Text('OK!' , style: TextStyle(
+        fontSize: 23),
+    ),
+
+    textColor: Colors.black,
+    color: Color(0xffF5EDDA),
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(30))),
+  ),
+],
+  )
+],
+          ),
+        ),
+      ),
+
+    );
+  }
+}
+
