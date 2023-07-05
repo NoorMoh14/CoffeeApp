@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: PageTo.loading,
+      initialRoute: PageTo.profile,
       getPages: BaseRoute.pages(),
       theme: applicationTheme(context),
     );
