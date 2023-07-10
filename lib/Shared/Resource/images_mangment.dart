@@ -4,6 +4,9 @@ class BaseImage {
   static String surat({required var nomor}) => "assets/image/sname_$nomor.png";
   static var logo = "assets/image/iconapp.png";
   static var background_start = "assets/image/background_start.png";
+  static var coffee_background = "assets/image/coffee_background.png";
+  static var avatar = "assets/image/avatar.png";
+  static var Menu = "assets/image/Menu.png";
 }
 
 class BaseImagejpg {

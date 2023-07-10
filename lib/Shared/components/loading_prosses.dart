@@ -163,7 +163,7 @@ class _EasySplashScreenState extends State<EasySplashScreen> {
                       children: <Widget>[
                         widget.showLoader
                             ? Center(
-                                child: LoadingAnimationWidget.fourRotatingDots(
+                                child: LoadingAnimationWidget.inkDrop(
                                   color: widget.loaderColor,
                                   size: 35,
                                 ),
