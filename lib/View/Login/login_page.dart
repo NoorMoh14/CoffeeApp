@@ -1,3 +1,4 @@
+import 'package:coffee_app/Shared/Base/routing.dart';
 import 'package:coffee_app/Shared/Resource/color_mangment.dart';
 import 'package:coffee_app/Shared/Resource/size_mangment.dart';
 import 'package:coffee_app/Shared/Resource/view_mangment.dart';
@@ -140,7 +141,9 @@ class _LoginPageState extends State<LoginPage> {
                   Align(
                     alignment: Alignment.center,
                     child: MaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(PageTo.about);
+                      },
                       height: 60,
                       minWidth: 200,
                       child: Text(

@@ -2,8 +2,8 @@ import 'package:coffee_app/View/coffeemenu/list/list_coffee.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CoffeeMenu extends StatelessWidget {
-  const CoffeeMenu({super.key});
+class CoffeeMenuPage extends StatelessWidget {
+  const CoffeeMenuPage({super.key});
 
   @override
   Widget build(BuildContext context) {

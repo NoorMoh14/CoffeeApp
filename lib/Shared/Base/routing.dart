@@ -1,3 +1,5 @@
+import 'package:coffee_app/Shared/Binding/about_binding.dart';
+import 'package:coffee_app/Shared/Binding/coffee_menu_binding.dart';
 import 'package:coffee_app/Shared/Binding/loading_binding.dart';
 import 'package:coffee_app/Shared/Binding/login_binding.dart';
 import 'package:coffee_app/Shared/Binding/profile_binding.dart';
@@ -8,6 +10,8 @@ import 'package:coffee_app/View/Login/login_page.dart';
 import 'package:coffee_app/View/Profile/profile_page.dart';
 import 'package:coffee_app/View/Regester/regester_page.dart';
 import 'package:coffee_app/View/Start/start_page.dart';
+import 'package:coffee_app/View/about/about.dart';
+import 'package:coffee_app/View/coffeemenu/coffeemenu.dart';
 import 'package:get/get.dart';
 
 class BaseRoute {
@@ -54,12 +58,18 @@ class BaseRoute {
           page: const RegsterPage(),
           binding: RegisterBinding(),
         ),
-        // // _getPage(
-        // //   transitionScreen: Transition.rightToLeft,
-        // //   name: PageTo.continueCreateToEmail,
-        // //   page: const ContinueCreateToEmailPage(),
-        // //   binding: BindingContinueCreateToEmail(),
-        // // ),
+        _getPage(
+          transitionScreen: Transition.rightToLeft,
+          name: PageTo.about,
+          page: AboutPage(),
+          binding: AboutBinding(),
+        ),
+        _getPage(
+          transitionScreen: Transition.rightToLeft,
+          name: PageTo.coffeeMenu,
+          page: CoffeeMenuPage(),
+          binding: CoffeeMenuBinding(),
+        ),
         _getPage(
           transitionScreen: Transition.rightToLeft,
           name: PageTo.profile,
@@ -93,4 +103,6 @@ class PageTo {
   static const forgotPassword = '/ForgotPassword';
   static const profile = '/Profile';
   static const loading = '/Loading';
+  static const about = '/About';
+  static const coffeeMenu = '/CoffeeMenu';
 }
