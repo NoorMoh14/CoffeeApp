@@ -1,3 +1,4 @@
+import 'package:coffee_app/Shared/Base/routing.dart';
 import 'package:coffee_app/Shared/Resource/color_mangment.dart';
 import 'package:coffee_app/Shared/Resource/images_mangment.dart';
 import 'package:coffee_app/Shared/Resource/size_mangment.dart';
@@ -35,29 +36,35 @@ class StartPage extends StatelessWidget {
               ),
             ),
             Spacer(),
-            Container(
-              height: Get.height * 0.08,
-              width: Get.width * 0.6,
-              decoration: BoxDecoration(
-                  color: ColorManagement.colorPrimaryLight,
-                  borderRadius: BorderRadius.circular(40)),
-              child: Padding(
-                padding: EdgeInsets.all(14),
-                child: TextWidget(
-                    Title: "Login",
-                    colorText: ColorManagement.colorPrimary,
-                    FontSize: FontSize.s30),
+            InkWell(
+              onTap: () => Get.toNamed(PageTo.login),
+              child: Container(
+                height: Get.height * 0.08,
+                width: Get.width * 0.6,
+                decoration: BoxDecoration(
+                    color: ColorManagement.colorPrimaryLight,
+                    borderRadius: BorderRadius.circular(40)),
+                child: Padding(
+                  padding: EdgeInsets.all(14),
+                  child: TextWidget(
+                      Title: "Login",
+                      colorText: ColorManagement.colorPrimary,
+                      FontSize: FontSize.s30),
+                ),
               ),
             ),
             Padding(
               padding: EdgeInsets.only(
                   top: PaddingEdit.p10, bottom: PaddingEdit.p20),
-              child: TextWidget(
-                Title: "Register Me!",
-                colorText: ColorManagement.colorPrimaryLight,
-                customFont: 'Montserrat-VariableFont_wght',
-                FontWeight: FontWeight.bold,
-                FontSize: FontSize.s16,
+              child: InkWell(
+                onTap: () => Get.toNamed(PageTo.regester),
+                child: TextWidget(
+                  Title: "Register Me!",
+                  colorText: ColorManagement.colorPrimaryLight,
+                  customFont: 'Montserrat-VariableFont_wght',
+                  FontWeight: FontWeight.bold,
+                  FontSize: FontSize.s16,
+                ),
               ),
             ),
           ],
