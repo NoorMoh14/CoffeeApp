@@ -32,6 +32,7 @@ dependencies:
   firebase_core: ^2.14.0
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.7
   flutterfire_cli: ^0.2.7
   get: ^4.6.5
   get_storage: ^2.1.1
@@ -53,6 +54,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/image/
+    - assets/icons/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
@@ -68,7 +70,6 @@ flutter:
         - asset: assets/fonts/Lobster-Regular.ttf
     - family: Montserrat-VariableFont_wght
       fonts:
-        - asset: assets/fonts/Montserrat-VariableFont_wght.ttf 
-  
+        - asset: assets/fonts/Montserrat-VariableFont_wght.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
