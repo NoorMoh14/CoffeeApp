@@ -1,3 +1,4 @@
+
 import 'package:coffee_app/Shared/Binding/about_binding.dart';
 import 'package:coffee_app/Shared/Binding/coffee_menu_binding.dart';
 import 'package:coffee_app/Shared/Binding/loading_binding.dart';
@@ -11,7 +12,7 @@ import 'package:coffee_app/View/Profile/profile_page.dart';
 import 'package:coffee_app/View/Regester/regester_page.dart';
 import 'package:coffee_app/View/Start/start_page.dart';
 import 'package:coffee_app/View/about/about.dart';
-import 'package:coffee_app/View/coffeemenu/coffeemenu.dart';
+import 'package:coffee_app/View/coffeemenu/coffeemenu.dart'
 import 'package:get/get.dart';
 
 class BaseRoute {
