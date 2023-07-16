@@ -1,18 +1,21 @@
-
 import 'package:coffee_app/Shared/Binding/about_binding.dart';
 import 'package:coffee_app/Shared/Binding/coffee_menu_binding.dart';
 import 'package:coffee_app/Shared/Binding/loading_binding.dart';
 import 'package:coffee_app/Shared/Binding/login_binding.dart';
+import 'package:coffee_app/Shared/Binding/order_binding.dart';
 import 'package:coffee_app/Shared/Binding/profile_binding.dart';
 import 'package:coffee_app/Shared/Binding/register_binding.dart';
 import 'package:coffee_app/Shared/Binding/start_binding.dart';
+import 'package:coffee_app/Shared/Binding/status_binding.dart';
 import 'package:coffee_app/View/Loading/loading_page.dart';
 import 'package:coffee_app/View/Login/login_page.dart';
+import 'package:coffee_app/View/Order/orde_page.dart';
 import 'package:coffee_app/View/Profile/profile_page.dart';
 import 'package:coffee_app/View/Regester/regester_page.dart';
 import 'package:coffee_app/View/Start/start_page.dart';
+import 'package:coffee_app/View/Status/status_page.dart';
 import 'package:coffee_app/View/about/about.dart';
-import 'package:coffee_app/View/coffeemenu/coffeemenu.dart'
+import 'package:coffee_app/View/coffeemenu/coffeemenu.dart';
 import 'package:get/get.dart';
 
 class BaseRoute {
@@ -42,11 +45,12 @@ class BaseRoute {
           page: const LoginPage(),
           binding: LoginBinding(),
         ),
-        // _getPage(
-        //   name: PageTo.forgotPassword,
-        //   page: ForgotPasswordPage(),
-        //   binding: ForgetPasswordBinding(),
-        // ),
+        _getPage(
+          transitionScreen: Transition.rightToLeft,
+          name: PageTo.status,
+          page: StatusPage(),
+          binding: StatusBinding(),
+        ),
         // // _getPage(
         // //   transitionScreen: Transition.rightToLeft,
         // //   name: PageTo.codeToConfirmEmail,
@@ -77,6 +81,12 @@ class BaseRoute {
           page: ProfilePage(),
           binding: ProfileBinding(),
         ),
+        _getPage(
+          transitionScreen: Transition.rightToLeft,
+          name: PageTo.order,
+          page: OrderPage(),
+          binding: OrderBinding(),
+        ),
       ];
 
   static GetPage _getPage({
@@ -106,4 +116,6 @@ class PageTo {
   static const loading = '/Loading';
   static const about = '/About';
   static const coffeeMenu = '/CoffeeMenu';
+  static const order = '/Order';
+  static const status = '/Status';
 }

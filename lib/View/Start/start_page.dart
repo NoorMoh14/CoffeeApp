@@ -49,7 +49,7 @@ class StartPage extends StatelessWidget {
                   child: TextWidget(
                       Title: "Login",
                       colorText: ColorManagement.colorPrimary,
-                      FontSize: FontSize.s30),
+                      FontSize: FontSize.s26),
                 ),
               ),
             ),

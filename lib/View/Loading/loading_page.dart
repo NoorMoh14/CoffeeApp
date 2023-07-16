@@ -27,7 +27,7 @@ class LoadingPage extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        navigator: PageTo.start,
+        navigator: controller.screen,
         durationInSeconds: 5,
       ),
     );
