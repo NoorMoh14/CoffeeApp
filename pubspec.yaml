@@ -28,14 +28,19 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cloud_firestore: ^4.8.2
   cupertino_icons: ^1.0.2
-  firebase_core: ^2.14.0
+  email_validator: ^2.1.17
+  firebase_auth: ^4.6.3
+  firebase_core: ^2.4.0
+  firebase_storage: ^11.2.4
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.7
   flutterfire_cli: ^0.2.7
   get: ^4.6.5
   get_storage: ^2.1.1
+  image_picker: ^0.8.3
   loading_animation_widget: ^1.2.0+4
 
 dev_dependencies:
@@ -67,7 +72,7 @@ flutter:
   fonts:
     - family: Lobster-Regular
       fonts:
-        - asset: assets/fonts/Lobster-Regular.ttf
+        - asset: assets/fonts/Merienda-Regular.ttf
     - family: Montserrat-VariableFont_wght
       fonts:
         - asset: assets/fonts/Montserrat-VariableFont_wght.ttf
