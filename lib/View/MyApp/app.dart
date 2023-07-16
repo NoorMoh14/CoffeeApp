@@ -1,3 +1,4 @@
+import 'package:coffee_app/Shared/Resource/string_mangment.dart';
 import 'package:coffee_app/Shared/Resource/theme_mangment.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ class MyApp extends StatefulWidget {
   static final MyApp _instance =
       MyApp._internal(); // singleton or single instance
   factory MyApp() => _instance; // factory
+
   @override
   // ignore: library_private_types_in_public_api
   _MyAppState createState() => _MyAppState();

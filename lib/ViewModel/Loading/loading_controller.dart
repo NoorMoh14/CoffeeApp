@@ -1,6 +1,18 @@
+import 'package:coffee_app/Shared/Base/routing.dart';
+import 'package:coffee_app/Shared/Resource/string_mangment.dart';
 import 'package:get/get.dart';
 
 class LoadingContrller extends GetxController {
+  String? screen = PageTo.start;
+  @override
+  void onInit() {
+    super.onInit();
+    if (AppStrings.storage.read('token') == null) {
+      screen = PageTo.start;
+    } else {
+      screen = PageTo.coffeeMenu;
+    }
+  }
   // String screen = PageTo.onBoarding;
   // @override
   // void onInit() {
