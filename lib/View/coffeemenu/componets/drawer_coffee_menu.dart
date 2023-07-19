@@ -100,7 +100,7 @@ Widget drawer_coffee_menu(
         ),
       ),
       InkWell(
-        onTap: () => scaffoldKey.currentState?.closeDrawer(),
+        onTap: () => Get.toNamed(PageTo.gift),
         child: Text(
           "Gifts",
           style: TextStyle(

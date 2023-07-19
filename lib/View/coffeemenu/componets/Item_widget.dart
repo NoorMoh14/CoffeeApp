@@ -92,7 +92,7 @@ Container Item_Widget(coffeeMenuContrller controller, int index) {
               child: Padding(
                 padding: EdgeInsets.only(left: 10),
                 child: Text(
-                  "${controller.Itemlist![index].Price}\$",
+                  "${controller.Itemlist![index].Price}\ JOD",
                   style: TextStyle(
                       fontSize: FontSize.s12,
                       color: ColorManagement.colorWhite),
