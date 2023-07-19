@@ -1,7 +1,9 @@
+import 'package:coffee_app/Shared/Base/routing.dart';
 import 'package:coffee_app/Shared/Resource/color_mangment.dart';
 import 'package:coffee_app/Shared/Resource/images_mangment.dart';
 import 'package:coffee_app/Shared/Resource/size_mangment.dart';
 import 'package:coffee_app/Shared/Resource/view_mangment.dart';
+import 'package:coffee_app/Shared/components/text_widget.dart';
 import 'package:coffee_app/ViewModel/Profile/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,15 +19,55 @@ class ProfilePage extends StatelessWidget {
                   children: [
                     Align(
                       alignment: Alignment.topCenter,
-                      child: Container(
-                        width: Get.width,
-                        child: FractionallySizedBox(
-                          child: Image.asset(
-                            BaseImage.coffee_background,
-                            fit: BoxFit.fill,
-                            opacity: const AlwaysStoppedAnimation(.3),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: Get.width,
+                            child: FractionallySizedBox(
+                              child: Image.asset(
+                                BaseImage.coffee_background,
+                                fit: BoxFit.fill,
+                                opacity: const AlwaysStoppedAnimation(.3),
+                              ),
+                            ),
                           ),
-                        ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Padding(
+                              padding:
+                                  EdgeInsets.only(top: 20, left: 20, right: 20),
+                              child: SizedBox(
+                                width: Get.width,
+                                child: Row(
+                                  children: [
+                                    TextWidget(
+                                      Title: 'Order History',
+                                      FontSize: FontSize.s18,
+                                      colorText:
+                                          ColorManagement.colorPrimaryLight,
+                                    ),
+                                    Spacer(),
+                                    InkWell(
+                                      onTap: () {
+                                        Get.back();
+                                        Get.toNamed(PageTo.status);
+                                      },
+                                      child: CircleAvatar(
+                                        radius: 15,
+                                        backgroundColor:
+                                            ColorManagement.colorPrimaryLight,
+                                        child: Icon(
+                                          Icons.arrow_forward,
+                                          color: ColorManagement.colorPrimary,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                     ),
                     SafeArea(

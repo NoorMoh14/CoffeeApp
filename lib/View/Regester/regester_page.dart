@@ -221,6 +221,7 @@ class _RegsterPageState extends State<RegsterPage> {
                                         padding: const EdgeInsets.only(
                                             right: 15, top: 10),
                                         child: TextFormField(
+                                          obscureText: true,
                                           validator: (passCurrentValue) {
                                             RegExp regex = RegExp(
                                                 r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$&*~]).{8,}$');
@@ -265,6 +266,7 @@ class _RegsterPageState extends State<RegsterPage> {
                                         padding: const EdgeInsets.only(
                                             right: 15, top: 10),
                                         child: TextFormField(
+                                          obscureText: true,
                                           validator: (passCurrentValue) {
                                             RegExp regex = RegExp(
                                                 r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$&*~]).{8,}$');

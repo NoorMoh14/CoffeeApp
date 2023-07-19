@@ -40,7 +40,7 @@ class StartPage extends StatelessWidget {
               onTap: () => Get.toNamed(PageTo.login),
               child: Container(
                 height: Get.height * 0.08,
-                width: Get.width * 0.6,
+                width: Get.width * 0.65,
                 decoration: BoxDecoration(
                     color: ColorManagement.colorPrimaryLight,
                     borderRadius: BorderRadius.circular(40)),
@@ -49,7 +49,7 @@ class StartPage extends StatelessWidget {
                   child: TextWidget(
                       Title: "Login",
                       colorText: ColorManagement.colorPrimary,
-                      FontSize: FontSize.s26),
+                      FontSize: FontSize.s24),
                 ),
               ),
             ),

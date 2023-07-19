@@ -7,6 +7,7 @@ import 'package:coffee_app/Shared/Binding/profile_binding.dart';
 import 'package:coffee_app/Shared/Binding/register_binding.dart';
 import 'package:coffee_app/Shared/Binding/start_binding.dart';
 import 'package:coffee_app/Shared/Binding/status_binding.dart';
+import 'package:coffee_app/View/Gifts/gift_page.dart';
 import 'package:coffee_app/View/Loading/loading_page.dart';
 import 'package:coffee_app/View/Login/login_page.dart';
 import 'package:coffee_app/View/Order/orde_page.dart';
@@ -51,12 +52,11 @@ class BaseRoute {
           page: StatusPage(),
           binding: StatusBinding(),
         ),
-        // // _getPage(
-        // //   transitionScreen: Transition.rightToLeft,
-        // //   name: PageTo.codeToConfirmEmail,
-        // //   page: CodeToConfirmEmailPage(),
-        // //   binding: BindingCodeToConfirmEmail(),
-        // // ),
+        _getPage(
+          transitionScreen: Transition.rightToLeft,
+          name: PageTo.gift,
+          page: GiftsPage(),
+        ),
         _getPage(
           transitionScreen: Transition.rightToLeft,
           name: PageTo.regester,
@@ -118,4 +118,5 @@ class PageTo {
   static const coffeeMenu = '/CoffeeMenu';
   static const order = '/Order';
   static const status = '/Status';
+  static const gift = '/Gifts';
 }
