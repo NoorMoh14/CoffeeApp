@@ -34,10 +34,10 @@ class OrderController extends GetxController {
     return snapshot.docs.map((e) => ItemModel.fromSnapshot(e)).toList();
   }
 
-  double sum = 0.0;
+  double sum = 0;
   Future<List<QueryDocumentSnapshot<Map<String, dynamic>>>>
       getdataTotal() async {
-    sum = 0.0;
+    sum = 0;
     QuerySnapshot<Map<String, dynamic>> snap = await FirebaseFirestore.instance
         .collection('Item-order-user')
         .doc(AppStrings.storage.read('Email'))
@@ -87,11 +87,51 @@ class OrderController extends GetxController {
           .collection("order-details")
           .doc('${rand}')
           .collection('item')
-          .add({
+          .doc('${rand}${i}');
+      await FirebaseFirestore.instance
+          .collection('order')
+          .doc(AppStrings.storage.read('Email'))
+          .collection("order-details")
+          .doc('${rand}')
+          .collection('item')
+          .doc('${rand}${i}')
+          .set({
         'nameItem': data[i]['nameItem'].toString(),
         'quantity': data[i]['quantity'].toString(),
         'status': '1',
+        'Email': AppStrings.storage.read('Email'),
+        'id-item': '${rand}${i}',
+        'id-order': '${rand}',
       });
+
+      // Map<String, dynamic> location = {
+      //   'Addrees': 'Amman',
+      //   'Table-no': '${Tableno.toString()}',
+      //   'lan': '',
+      //   'loc': '',
+      // };
+      // Map<String, dynamic> time = {
+      //   'day': '${DateTime.now().day}',
+      //   'time': '${DateTime.now().toString()}',
+      // };
+      // Map<String, dynamic> user = {
+      //   'email': '${AppStrings.storage.read('Email')}',
+      //   'total': '${total.toString()}',
+      //   'quantity': data[i]['quantity'].toString(),
+      // };
+      // await FirebaseFirestore.instance
+      //     .collection('order')
+      //     .doc(AppStrings.storage.read('Email'))
+      //     .collection("order-details")
+      //     .add({
+      //   'ImageItem': data[i]['ImageItem'].toString(),
+      //   'Price': data[i]['Price'].toString(),
+      //   'location': location,
+      //   'nameItem': data[i]['nameItem'].toString(),
+      //   'status': '1',
+      //   'time': time,
+      //   'user-information': user,
+      // });
 
       await FirebaseFirestore.instance
           .collection('Item-order-user')

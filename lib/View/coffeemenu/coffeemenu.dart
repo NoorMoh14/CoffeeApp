@@ -1,16 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffee_app/Shared/Base/routing.dart';
-import 'package:coffee_app/Shared/Resource/color_mangment.dart';
-import 'package:coffee_app/Shared/Resource/size_mangment.dart';
-import 'package:coffee_app/Shared/Resource/string_mangment.dart';
-import 'package:coffee_app/Shared/Resource/view_mangment.dart';
 import 'package:coffee_app/Shared/components/text_widget.dart';
-import 'package:coffee_app/View/coffeemenu/list/list_coffee.dart';
+import 'package:coffee_app/View/coffeemenu/componets/drawer_coffee_menu.dart';
 import 'package:coffee_app/ViewModel/CoffeeMenu/coffee_menu_controller.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+
+import 'componets/Item_widget.dart';
 
 class CoffeeMenuPage extends StatelessWidget {
   const CoffeeMenuPage({super.key});
@@ -25,125 +21,7 @@ class CoffeeMenuPage extends StatelessWidget {
                 builder: (snap, context) {
                   return Scaffold(
                       key: scaffoldKey,
-                      drawer: Drawer(
-                        backgroundColor: ColorManagement.colorPrimary,
-                        child: Column(children: [
-                          Padding(
-                            padding: EdgeInsets.only(top: Get.height * 0.2),
-                            child: InkWell(
-                              onTap: () =>
-                                  scaffoldKey.currentState?.closeDrawer(),
-                              child: Text(
-                                "Menu",
-                                style: TextStyle(
-                                    fontSize: FontSize.s30,
-                                    color: ColorManagement.colorPrimaryLight),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: PaddingEdit.p20,
-                                vertical: PaddingEdit.p20),
-                            child: Container(
-                              height: 1,
-                              width: Get.width,
-                              color: ColorManagement.colorPrimaryDark,
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Get.toNamed(PageTo.about);
-                            },
-                            child: Text(
-                              "About",
-                              style: TextStyle(
-                                  fontSize: FontSize.s30,
-                                  color: ColorManagement.colorPrimaryLight),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: PaddingEdit.p20,
-                                vertical: PaddingEdit.p20),
-                            child: Container(
-                              height: 1,
-                              width: Get.width,
-                              color: ColorManagement.colorPrimaryDark,
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Get.toNamed(PageTo.profile);
-                            },
-                            child: Text(
-                              "Profile",
-                              style: TextStyle(
-                                  fontSize: FontSize.s30,
-                                  color: ColorManagement.colorPrimaryLight),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: PaddingEdit.p20,
-                                vertical: PaddingEdit.p20),
-                            child: Container(
-                              height: 1,
-                              width: Get.width,
-                              color: ColorManagement.colorPrimaryDark,
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Get.toNamed(PageTo.status);
-                            },
-                            child: Text(
-                              "Status",
-                              style: TextStyle(
-                                  fontSize: FontSize.s30,
-                                  color: ColorManagement.colorPrimaryLight),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: PaddingEdit.p20,
-                                vertical: PaddingEdit.p20),
-                            child: Container(
-                              height: 1,
-                              width: Get.width,
-                              color: ColorManagement.colorPrimaryDark,
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () async {
-                              try {
-                                await FirebaseAuth.instance.signOut();
-                                AppStrings.storage.remove('Email');
-                                AppStrings.storage.remove('token');
-                                Get.offAndToNamed(PageTo.start);
-                              } catch (e) {
-                                print(e);
-                              }
-                            },
-                            child: Text(
-                              "Log Out",
-                              style: TextStyle(
-                                  fontSize: FontSize.s30,
-                                  color: ColorManagement.colorPrimaryLight),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: PaddingEdit.p20,
-                                vertical: PaddingEdit.p20),
-                            child: Container(
-                              height: 1,
-                              width: Get.width,
-                              color: ColorManagement.colorPrimaryDark,
-                            ),
-                          ),
-                        ]),
-                      ),
+                      drawer: drawer_coffee_menu(scaffoldKey, controller),
                       backgroundColor: const Color(0xff98694F),
                       body: controller.loading != true
                           ? Stack(children: [
@@ -249,139 +127,8 @@ class CoffeeMenuPage extends StatelessWidget {
                             ));
                 })));
   }
-
-  Container Item_Widget(coffeeMenuContrller controller, int index) {
-    return Container(
-      height: Get.height * 0.20,
-      width: Get.width * 0.3,
-      color: ColorManagement.colorTrans,
-      child: Column(children: [
-        Padding(
-          padding: EdgeInsets.only(top: 5),
-          child: Container(
-            height: 140,
-            width: 100,
-            decoration: BoxDecoration(
-                color: ColorManagement.colorTrans,
-                image: DecorationImage(
-                    // fit: BoxFit.fill,
-                    image: NetworkImage(
-                  controller.Itemlist![index].ImageItem.toString(),
-                ))),
-          ),
-        ),
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Padding(
-            padding: EdgeInsets.only(left: 10),
-            child: SizedBox(
-              width: Get.width * 0.3,
-              child: Text(
-                controller.Itemlist![index].nameItem.toString(),
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: FontSize.s16,
-                    color: ColorManagement.colorWhite),
-              ),
-            ),
-          ),
-        ),
-        Align(
-          alignment: Alignment.centerLeft,
-          child: SizedBox(
-            width: Get.width * 0.3,
-            height: Get.height * 0.05,
-            child: Padding(
-              padding: EdgeInsets.only(left: 10, top: 2),
-              child: Text(
-                controller.Itemlist![index].descrption.toString(),
-                maxLines: 2,
-                style: TextStyle(
-                    fontSize: FontSize.s14, color: ColorManagement.colorWhite),
-              ),
-            ),
-          ),
-        ),
-
-        Padding(
-          padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
-          child: Row(
-            children: [
-              Icon(
-                Icons.star,
-                size: 17,
-                color: Colors.yellowAccent,
-              ),
-              SizedBox(
-                width: Get.width * 0.1,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 10),
-                  child: Text(
-                    controller.Itemlist![index].feedback_star.toString(),
-                    style: TextStyle(
-                        fontSize: FontSize.s12,
-                        color: ColorManagement.colorWhite),
-                  ),
-                ),
-              ),
-              Spacer(),
-              SizedBox(
-                width: Get.width * 0.1,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 10),
-                  child: Text(
-                    "${controller.Itemlist![index].Price}\$",
-                    style: TextStyle(
-                        fontSize: FontSize.s12,
-                        color: ColorManagement.colorWhite),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        InkWell(
-          onTap: () async {
-            await FirebaseFirestore.instance
-                .collection('Item-order-user')
-                .doc(AppStrings.storage.read('Email'))
-                .collection("Item")
-                .doc(controller.Itemlist![index].id)
-                .set({
-              'ImageItem': controller.Itemlist![index].ImageItem,
-              'Price': controller.Itemlist![index].Price,
-              'descrption': controller.Itemlist![index].descrption,
-              'feedback_star': controller.Itemlist![index].feedback_star,
-              'nameItem': controller.Itemlist![index].nameItem,
-              'quantity': '1'
-            });
-          },
-          child: Container(
-            height: 40,
-            width: Get.width,
-            color: ColorManagement.colorPrimaryLight,
-            child: Align(
-              alignment: Alignment.center,
-              child: TextWidget(Title: "Add Cart"),
-            ),
-          ),
-        ),
-        // Padding(
-        //   padding: EdgeInsets.only(top: 10),
-        //   child: Container(
-        //     height: 40,
-        //     width: Get.width,
-        //     color: ColorManagement.colorPrimaryLight,
-        //     child: Align(
-        //       alignment: Alignment.center,
-        //       child: TextWidget(Title: "CheckOut"),
-        //     ),
-        //   ),
-        // )
-      ]),
-    );
-  }
 }
+
 
 //             children: [
 //               IconButton(
