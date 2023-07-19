@@ -7,6 +7,7 @@ import 'package:coffee_app/Shared/Resource/color_mangment.dart';
 import 'package:coffee_app/Shared/Resource/size_mangment.dart';
 import 'package:coffee_app/Shared/Resource/string_mangment.dart';
 import 'package:coffee_app/Shared/components/text_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -299,10 +300,10 @@ class _GiftsPageState extends State<GiftsPage> {
                                   Spacer(),
                                   InkWell(
                                     onTap: () async {
-                                      if (double.parse(giftitem![index]
+                                      if (int.parse(giftitem![index]
                                                   .PointItem
                                                   .toString()) <=
-                                              double.parse(userlistgift!.Point
+                                              int.parse(userlistgift!.Point
                                                   .toString()) &&
                                           double.parse(giftitem![index]
                                                   .cashbackitem
@@ -315,16 +316,43 @@ class _GiftsPageState extends State<GiftsPage> {
                                                   child: QrImageView(
                                                     data: '''
 {
-  'email':${userlistgift!.Email}
-  'id-item':${giftitem![index].id}
-  'id-user':${userlistgift!.id}
+  "email": "${userlistgift!.Email}" , 
+  "id-item":"${giftitem![index].id}" ,
+  "id-user":"${userlistgift!.id}"
 }
 ''',
                                                     size: 300,
                                                   ),
                                                 ));
                                       } else {
-                                        print('not Done');
+                                        // print(
+                                        //     '${int.parse(giftitem![index].PointItem.toString())}');
+                                        // print(
+                                        //     '${int.parse(userlistgift!.Point.toString())}');
+                                        // print(
+                                        //     '${double.parse(giftitem![index].cashbackitem.toString())}');
+                                        // print(
+                                        //     '${double.parse(userlistgift!.walle.toString())}');
+                                        return showDialog(
+                                          context: context,
+                                          builder: (ctx) => AlertDialog(
+                                            title: Text(
+                                              "Not Coin and Wallet",
+                                              style: TextStyle(
+                                                  color: Colors.redAccent),
+                                            ),
+                                            content: Text(
+                                                "Check to Coin and Wallet !"),
+                                            actions: <Widget>[
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.of(ctx).pop();
+                                                },
+                                                child: Text("Ok"),
+                                              ),
+                                            ],
+                                          ),
+                                        );
                                       }
                                     },
                                     child: Container(
