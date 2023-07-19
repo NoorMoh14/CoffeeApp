@@ -113,6 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                             return null;
                           },
                           controller: AppStrings.PasswordLogin,
+                          obscureText: true,
                           style: TextStyle(fontSize: FontSize.s12),
                           decoration: InputDecoration(
                             filled: true,
@@ -126,30 +127,30 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(
                         height: Get.height * 0.02,
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(left: PaddingEdit.p8),
-                        child: Row(
-                          children: [
-                            Checkbox(
-                              value: isChecked,
-                              activeColor: Color(0xffA9A454),
-                              onChanged: (newBool) {
-                                setState(() {
-                                  isChecked = newBool;
-                                });
-                              },
-                            ),
-                            Text(
-                              "Remember me",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Montserrat-VariableFont_wght',
-                                color: Colors.white,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
+                      // Padding(
+                      //   padding: EdgeInsets.only(left: PaddingEdit.p8),
+                      //   child: Row(
+                      //     children: [
+                      //       Checkbox(
+                      //         value: isChecked,
+                      //         activeColor: Color(0xffA9A454),
+                      //         onChanged: (newBool) {
+                      //           setState(() {
+                      //             isChecked = newBool;
+                      //           });
+                      //         },
+                      //       ),
+                      //       Text(
+                      //         "Remember me",
+                      //         style: TextStyle(
+                      //           fontWeight: FontWeight.bold,
+                      //           fontFamily: 'Montserrat-VariableFont_wght',
+                      //           color: Colors.white,
+                      //         ),
+                      //       )
+                      //     ],
+                      //   ),
+                      // ),
                       SizedBox(
                         height: Get.height * 0.1,
                       ),

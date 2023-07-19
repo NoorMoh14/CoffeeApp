@@ -52,7 +52,7 @@ class OrderPage extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                          flex: 5,
+                          flex: 7,
                           child: Padding(
                             padding: EdgeInsets.symmetric(
                                 vertical: PaddingEdit.p10,
@@ -81,112 +81,177 @@ class OrderPage extends StatelessWidget {
                                       DocumentSnapshot _documentSnapshot =
                                           snapshot.data!.docs[Index];
                                       return Container(
-                                        height: Get.height * 0.09,
+                                        height: Get.height * 0.15,
                                         width: Get.width,
                                         // color: ColorManagement.colorBlack,
                                         child: Padding(
                                           padding: EdgeInsets.symmetric(
                                               vertical: PaddingEdit.p10),
-                                          child: Column(
+                                          child: Row(
                                             children: [
-                                              Row(
+                                              Container(
+                                                height: 170,
+                                                width: 100,
+                                                decoration: BoxDecoration(
+                                                    image: DecorationImage(
+                                                        image: NetworkImage(
+                                                            _documentSnapshot[
+                                                                'ImageItem']))),
+                                              ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
-                                                  TextWidget(
-                                                      Title: _documentSnapshot[
-                                                          'nameItem'],
-                                                      colorText: ColorManagement
-                                                          .colorPrimary),
-                                                  Spacer(),
-                                                  TextWidget(
-                                                      Title: _documentSnapshot[
-                                                          'Price'],
-                                                      colorText: ColorManagement
-                                                          .colorPrimary),
+                                                  SizedBox(
+                                                    width: Get.width * 0.6,
+                                                    child: Row(
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  left: 10),
+                                                          child: TextWidget(
+                                                              Title:
+                                                                  _documentSnapshot[
+                                                                      'nameItem'],
+                                                              colorText:
+                                                                  ColorManagement
+                                                                      .colorPrimary),
+                                                        ),
+                                                        // Spacer(),
+                                                        // TextWidget(
+                                                        //     Title:
+                                                        //         _documentSnapshot[
+                                                        //             'Price'],
+                                                        //     colorText:
+                                                        //         ColorManagement
+                                                        //             .colorPrimary),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: Get.width * 0.6,
+                                                    child: Row(
+                                                      children: [
+                                                        Spacer(),
+                                                        InkWell(
+                                                            onTap: () async {
+                                                              int Q = int.parse(
+                                                                  _documentSnapshot[
+                                                                      'quantity']);
+                                                              if (Q > 1) {
+                                                                Q = Q - 1;
+                                                              }
+                                                              await FirebaseFirestore
+                                                                  .instance
+                                                                  .collection(
+                                                                      'Item-order-user')
+                                                                  .doc(AppStrings
+                                                                      .storage
+                                                                      .read(
+                                                                          'Email'))
+                                                                  .collection(
+                                                                      "Item")
+                                                                  .doc(
+                                                                      _documentSnapshot
+                                                                          .id)
+                                                                  .update({
+                                                                'quantity':
+                                                                    Q.toString()
+                                                              });
+                                                              controller
+                                                                  .update();
+                                                            },
+                                                            child: Icon(
+                                                                Icons.remove)),
+                                                        TextWidget(
+                                                            Title:
+                                                                _documentSnapshot[
+                                                                    'quantity'],
+                                                            colorText:
+                                                                ColorManagement
+                                                                    .colorPrimary),
+                                                        InkWell(
+                                                            onTap: () async {
+                                                              int Q = int.parse(
+                                                                  _documentSnapshot[
+                                                                      'quantity']);
+                                                              if (Q >= 1) {
+                                                                Q = Q + 1;
+                                                              }
+                                                              await FirebaseFirestore
+                                                                  .instance
+                                                                  .collection(
+                                                                      'Item-order-user')
+                                                                  .doc(AppStrings
+                                                                      .storage
+                                                                      .read(
+                                                                          'Email'))
+                                                                  .collection(
+                                                                      "Item")
+                                                                  .doc(
+                                                                      _documentSnapshot
+                                                                          .id)
+                                                                  .update({
+                                                                'quantity':
+                                                                    Q.toString()
+                                                              });
+                                                              controller
+                                                                  .update();
+                                                            },
+                                                            child: Icon(
+                                                                Icons.add)),
+                                                        InkWell(
+                                                          onTap: () async {
+                                                            await FirebaseFirestore
+                                                                .instance
+                                                                .collection(
+                                                                    'Item-order-user')
+                                                                .doc(AppStrings
+                                                                    .storage
+                                                                    .read(
+                                                                        'Email'))
+                                                                .collection(
+                                                                    "Item")
+                                                                .doc(
+                                                                    _documentSnapshot
+                                                                        .id)
+                                                                .delete();
+                                                            controller.update();
+                                                          },
+                                                          child: Icon(
+                                                            Icons.delete,
+                                                            color: Colors
+                                                                .redAccent,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: Get.width * 0.6,
+                                                    child: Row(
+                                                      children: [
+                                                        Spacer(),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  left: 10),
+                                                          child: TextWidget(
+                                                              Title:
+                                                                  '${_documentSnapshot['Price']} JOD',
+                                                              colorText:
+                                                                  ColorManagement
+                                                                      .colorPrimary),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
                                                 ],
                                               ),
-                                              Row(
-                                                children: [
-                                                  Spacer(),
-                                                  InkWell(
-                                                      onTap: () async {
-                                                        int Q = int.parse(
-                                                            _documentSnapshot[
-                                                                'quantity']);
-                                                        if (Q >= 1) {
-                                                          Q = Q + 1;
-                                                        }
-                                                        await FirebaseFirestore
-                                                            .instance
-                                                            .collection(
-                                                                'Item-order-user')
-                                                            .doc(AppStrings
-                                                                .storage
-                                                                .read('Email'))
-                                                            .collection("Item")
-                                                            .doc(
-                                                                _documentSnapshot
-                                                                    .id)
-                                                            .update({
-                                                          'quantity':
-                                                              Q.toString()
-                                                        });
-                                                        controller.update();
-                                                      },
-                                                      child: Icon(Icons.add)),
-                                                  TextWidget(
-                                                      Title: _documentSnapshot[
-                                                          'quantity'],
-                                                      colorText: ColorManagement
-                                                          .colorPrimary),
-                                                  InkWell(
-                                                      onTap: () async {
-                                                        int Q = int.parse(
-                                                            _documentSnapshot[
-                                                                'quantity']);
-                                                        if (Q > 1) {
-                                                          Q = Q - 1;
-                                                        }
-                                                        await FirebaseFirestore
-                                                            .instance
-                                                            .collection(
-                                                                'Item-order-user')
-                                                            .doc(AppStrings
-                                                                .storage
-                                                                .read('Email'))
-                                                            .collection("Item")
-                                                            .doc(
-                                                                _documentSnapshot
-                                                                    .id)
-                                                            .update({
-                                                          'quantity':
-                                                              Q.toString()
-                                                        });
-                                                        controller.update();
-                                                      },
-                                                      child:
-                                                          Icon(Icons.remove)),
-                                                  InkWell(
-                                                    onTap: () async {
-                                                      await FirebaseFirestore
-                                                          .instance
-                                                          .collection(
-                                                              'Item-order-user')
-                                                          .doc(AppStrings
-                                                              .storage
-                                                              .read('Email'))
-                                                          .collection("Item")
-                                                          .doc(_documentSnapshot
-                                                              .id)
-                                                          .delete();
-                                                      controller.update();
-                                                    },
-                                                    child: Icon(
-                                                      Icons.delete,
-                                                      color: Colors.redAccent,
-                                                    ),
-                                                  )
-                                                ],
-                                              )
                                             ],
                                           ),
                                         ),
@@ -197,7 +262,7 @@ class OrderPage extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                            flex: 1,
+                            flex: 2,
                             child: FutureBuilder(
                                 future: controller.getdataTotal(),
                                 builder: (BuildContext context,
@@ -217,7 +282,7 @@ class OrderPage extends StatelessWidget {
                                   }
 
                                   return Container(
-                                    // height: Get.height * 0.1,
+                                    height: Get.height * 0.1,
                                     width: Get.width,
                                     color: ColorManagement.colorPrimaryDark,
                                     child: Column(
@@ -226,32 +291,48 @@ class OrderPage extends StatelessWidget {
                                       children: [
                                         Padding(
                                           padding: EdgeInsets.only(
-                                              top: 10, left: 10, right: 10),
+                                              top: 20, left: 10, right: 10),
                                           child: SizedBox(
                                             width: Get.width * 0.9,
                                             child: Row(
                                               children: [
-                                                TextWidget(
-                                                    maxLines: 1,
-                                                    Title: "Total : ${length}",
-                                                    colorText: ColorManagement
-                                                        .colorWhite,
-                                                    FontSize: FontSize.s18),
-                                                Spacer(),
-                                                SizedBox(
-                                                  width: Get.width * 0.5,
+                                                Padding(
+                                                  padding:
+                                                      EdgeInsets.only(left: 20),
                                                   child: TextWidget(
                                                       maxLines: 1,
                                                       Title:
-                                                          "Total Money: ${controller.sum}",
+                                                          "Total : ${length}",
                                                       colorText: ColorManagement
                                                           .colorWhite,
                                                       FontSize: FontSize.s18),
+                                                ),
+                                                Spacer(),
+                                                SizedBox(
+                                                  width: Get.width * 0.6,
+                                                  child: Row(
+                                                    children: [
+                                                      Spacer(),
+                                                      SizedBox(
+                                                        width: Get.width * 0.5,
+                                                        child: TextWidget(
+                                                            maxLines: 1,
+                                                            Title:
+                                                                "Total Money: ${controller.sum} JOR",
+                                                            colorText:
+                                                                ColorManagement
+                                                                    .colorWhite,
+                                                            FontSize:
+                                                                FontSize.s18),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                               ],
                                             ),
                                           ),
                                         ),
+                                        Spacer(),
                                         bottonCheckOut(context, snapshot,
                                             length, controller),
                                       ],
