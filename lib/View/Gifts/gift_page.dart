@@ -263,6 +263,7 @@ class _GiftsPageState extends State<GiftsPage> {
                                       ),
                                     ),
                                   ),
+                                  Spacer(),
                                   Padding(
                                     padding: EdgeInsets.only(top: 10),
                                     child: Row(
