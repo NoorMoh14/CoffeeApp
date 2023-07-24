@@ -111,11 +111,11 @@ class CoffeeMenuPage extends StatelessWidget {
                                           gridDelegate:
                                               SliverGridDelegateWithFixedCrossAxisCount(
                                             crossAxisCount: 2,
-                                            crossAxisSpacing: 10.0,
+                                            crossAxisSpacing: 4.0,
                                             mainAxisSpacing: 4.0,
                                             mainAxisExtent: Get.height * 0.40,
                                             childAspectRatio:
-                                                Get.height / Get.width / 4,
+                                                Get.height / Get.width / 5,
                                           ),
                                           itemBuilder: (BuildContext context,
                                               int index) {
