@@ -154,54 +154,60 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(
                         height: Get.height * 0.1,
                       ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: MaterialButton(
-                          onPressed: () async {
-                            AppStrings.loginFormKey.currentState?.save();
-                            if (AppStrings.loginFormKey.currentState!
-                                .validate()) {
-                              print(AppStrings.EmailLogin.text);
-                              print(AppStrings.PasswordLogin.text);
-                              String? mass = await controller.LoginAccount(
-                                AppStrings.EmailLogin.text,
-                                AppStrings.PasswordLogin.text,
-                              );
-                              print('Screen');
-                              print(mass);
-                              if (mass == 'Done Login Account') {
-                                Get.snackbar('Massge', mass!,
-                                    backgroundColor: Colors.green);
-                                Get.offAllNamed(PageTo.coffeeMenu);
-                                AppStrings.storage
-                                    .write('Email', AppStrings.EmailLogin.text);
-                              } else {
-                                Get.snackbar('Massge', mass!,
-                                    backgroundColor: Colors.red[300]);
-                              }
+                      controller.loadin_login != true
+                          ? Align(
+                              alignment: Alignment.center,
+                              child: MaterialButton(
+                                onPressed: () async {
+                                  AppStrings.loginFormKey.currentState?.save();
+                                  if (AppStrings.loginFormKey.currentState!
+                                      .validate()) {
+                                    print(AppStrings.EmailLogin.text);
+                                    print(AppStrings.PasswordLogin.text);
+                                    String? mass =
+                                        await controller.LoginAccount(
+                                      AppStrings.EmailLogin.text,
+                                      AppStrings.PasswordLogin.text,
+                                    );
+                                    print('Screen');
+                                    print(mass);
+                                    if (mass == 'Done Login Account') {
+                                      Get.snackbar('Massge', mass!,
+                                          backgroundColor: Colors.green);
+                                      Get.offAllNamed(PageTo.coffeeMenu);
+                                      AppStrings.storage.write(
+                                          'Email', AppStrings.EmailLogin.text);
+                                    } else {
+                                      Get.snackbar('Massge', mass!,
+                                          backgroundColor: Colors.red[300]);
+                                    }
 
-                              // Get.offAndToNamed(PageTo.coffeeMenu);
-                            } else {
-                              Get.snackbar('Failed',
-                                  ' Variables are not entered check the information',
-                                  duration: const Duration(seconds: 1),
-                                  backgroundColor: Colors.red[900],
-                                  colorText: ColorManagement.colorWhite);
-                            }
-                          },
-                          height: 60,
-                          minWidth: 200,
-                          child: Text(
-                            'OK!',
-                            style: TextStyle(fontSize: 23),
-                          ),
-                          textColor: ColorManagement.colorPrimary,
-                          color: ColorManagement.colorPrimaryLight,
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(30))),
-                        ),
-                      ),
+                                    // Get.offAndToNamed(PageTo.coffeeMenu);
+                                  } else {
+                                    Get.snackbar('Failed',
+                                        ' Variables are not entered check the information',
+                                        duration: const Duration(seconds: 1),
+                                        backgroundColor: Colors.red[900],
+                                        colorText: ColorManagement.colorWhite);
+                                  }
+                                },
+                                height: 60,
+                                minWidth: 200,
+                                child: Text(
+                                  'OK!',
+                                  style: TextStyle(fontSize: 23),
+                                ),
+                                textColor: ColorManagement.colorPrimary,
+                                color: ColorManagement.colorPrimaryLight,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(30))),
+                              ),
+                            )
+                          : Align(
+                              alignment: Alignment.center,
+                              child: CircularProgressIndicator(),
+                            )
                     ],
                   )
                 ],

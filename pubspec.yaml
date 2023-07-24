@@ -36,6 +36,7 @@ dependencies:
   firebase_storage: ^11.2.4
   flutter:
     sdk: flutter
+  flutter_launcher_icons: ^0.9.0
   flutter_svg: ^2.0.7
   flutterfire_cli: ^0.2.7
   get: ^4.6.5
@@ -49,6 +50,11 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path_ios: "assets/image/iconapp.png"
+  image_path_android: "assets/image/iconapp.png"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
