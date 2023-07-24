@@ -113,7 +113,7 @@ class CoffeeMenuPage extends StatelessWidget {
                                             crossAxisCount: 2,
                                             crossAxisSpacing: 4.0,
                                             mainAxisSpacing: 4.0,
-                                            mainAxisExtent: Get.height * 0.40,
+                                            mainAxisExtent: Get.height * 0.45,
                                             childAspectRatio:
                                                 Get.height / Get.width / 5,
                                           ),

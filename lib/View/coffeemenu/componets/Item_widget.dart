@@ -64,6 +64,7 @@ Container Item_Widget(coffeeMenuContrller controller, int index) {
           ),
         ),
       ),
+      Spacer(),
       Padding(
         padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
         child: Row(
@@ -101,6 +102,7 @@ Container Item_Widget(coffeeMenuContrller controller, int index) {
           ],
         ),
       ),
+      Spacer(),
       InkWell(
         onTap: () async {
           await FirebaseFirestore.instance
