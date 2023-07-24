@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffee_app/Models/gifts_item_model.dart';
 import 'package:coffee_app/Models/user_model.dart';
@@ -7,8 +5,6 @@ import 'package:coffee_app/Shared/Resource/color_mangment.dart';
 import 'package:coffee_app/Shared/Resource/size_mangment.dart';
 import 'package:coffee_app/Shared/Resource/string_mangment.dart';
 import 'package:coffee_app/Shared/components/text_widget.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -25,7 +21,6 @@ class _GiftsPageState extends State<GiftsPage> {
   List<GiftItemModel>? giftitem;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     userget();
     giftitemget();
@@ -39,8 +34,8 @@ class _GiftsPageState extends State<GiftsPage> {
 
   Future<void> giftitemget() async {
     giftitem = await getAllItemdata();
-    // loading = false;
-    // setState(() {});
+    loading = false;
+    setState(() {});
   }
 
   bool loading = false;
