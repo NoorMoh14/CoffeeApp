@@ -102,11 +102,11 @@ class _GiftsPageState extends State<GiftsPage> {
                                       Title: "Coffee",
                                       colorText: ColorManagement.colorWhite,
                                       FontSize: FontSize.s26,
-                                      FontWeight: FontWeight.bold),
+                                      FontWeight: FontWeight.normal),
                                   TextWidget(
                                       Title: " App",
                                       colorText: ColorManagement.colorWhite,
-                                      FontSize: FontSize.s20,
+                                      FontSize: FontSize.s26,
                                       FontWeight: FontWeight.normal),
                                 ],
                               ),

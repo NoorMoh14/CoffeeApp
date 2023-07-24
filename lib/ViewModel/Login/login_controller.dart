@@ -46,10 +46,15 @@ class LoginContrller extends GetxController {
             }));
   }
 
+  bool loadin_login = false;
   // CollectionReference users = FirebaseFirestore.instance.collection('users');
   Future<String?> LoginAccount(String mail, String pwd) async {
+    loadin_login = true;
+    update();
     String? Mass = await _provider.mailSignIn(mail, pwd);
     print("Data Login");
+    loadin_login = false;
+    update();
     return Mass!;
   }
 }

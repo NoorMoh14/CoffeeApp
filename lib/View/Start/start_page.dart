@@ -25,14 +25,14 @@ class StartPage extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: Get.height * 0.15),
+              padding: EdgeInsets.only(top: Get.height * 0.10),
               child: Container(
-                height: Get.height * 0.29,
-                width: Get.height * .43,
+                height: Get.height * 0.35,
+                width: Get.height * .35,
                 decoration: BoxDecoration(
                     color: ColorManagement.colorTrans,
                     image: DecorationImage(
-                        fit: BoxFit.cover, image: AssetImage(BaseImage.logo))),
+                        fit: BoxFit.fill, image: AssetImage(BaseImage.logo))),
               ),
             ),
             Spacer(),
